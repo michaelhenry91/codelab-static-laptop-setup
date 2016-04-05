@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Paint Estimating Prompt Series</title>
+    <style>
+    body{
+      background-color:black;
+    }
+    h1{
+      font-size: 40px;
+      tex-align: center;
+      padding: 30px, 30px, 30px, 30px;
+      color: gold;
+    }
+    h3{
+      font-size: 20px;
+      tex-align: center;
+      padding: 20px, 20px, 20px, 20px;
+      color: white;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Please enjoy our paint estimating prompt series.  Estimate responsibly!!</h1>
+    <h3 id="room_length_onpage"</h3>
+    <h3 id="room_width_onpage"</h3>
+    <h3 id="room_height_onpage"</h3>
+    <h3 id="floor_space_onpage"</h3>
+    <h3 id="wall_surface_area_onpage"</h3>
+    <h3 id="trim_linear_feet_onpage"</h3>
+    <h3 id="included_things_onpage"</h3>
+    <h3 id="wall_price_onpage"</h3>
+    <h3 id="ceiling_price_onpage"</h3>
+    <h3 id="trim_price_onpage"</h3>
+    <h3 id="total_job_price_onpage"</h3>
+
+    <script>
+      var room_length = prompt ("What is the room LENGTH?")
+      var room_length_onpage = document.getElementById("room_length_onpage")
+      room_length_onpage.innerHTML = "The length of the room is " + room_length + " ft."
+
+      var room_width = prompt ("What is the room WIDTH?")
+      var room_width_onpage = document.getElementById("room_width_onpage")
+      room_width_onpage.innerHTML = "The width of the room is " + room_width + " ft."
+
+      var room_height = prompt ("What is the room HEIGHT?")
+      var room_height_onpage = document.getElementById("room_height_onpage")
+        room_height_onpage.innerHTML = "The height of the room is " + room_height + " ft."
+
+      var floor_space = (room_length * room_width)
+      var floor_space_onpage = document.getElementById("floor_space_onpage")
+        floor_space_onpage.innerHTML = "The floor space of the room is " + floor_space + " square ft."
+
+      var wall_surface_area = (room_length * room_height)*2 + (room_width * room_height)*2
+        wall_surface_area_onpage.innerHTML = "The surface area of all walls in the room is " + wall_surface_area + " ft."
+
+      var trim_linear_feet = (room_length * 2 + room_width * 2)
+        trim_linear_feet_onpage.innerHTML = "There is " + trim_linear_feet + " feet of linear trim."
+
+      var walls_included = prompt ("Are walls included?").toLowerCase()
+        if (walls_included === "yes") {
+        var number_of_wall_coats = prompt ("How many coats?")
+        }
+      var ceiling_included = prompt ("Is the ceiling included?").toLowerCase()
+        if (ceiling_included === "yes") {
+        var number_of_ceiling_coats = prompt ("How many coats?")
+        }
+      var trim_included = prompt ("Is the trim included?").toLowerCase()
+        if (trim_included === "yes") {
+        var number_of_trim_coats = prompt ("How many coats?")
+        }
+
+        var included_things = ''
+        if (walls_included === "yes") {
+          included_things = included_things + number_of_wall_coats + " coats on the walls are included, "
+        }
+          else {
+            included_things = included_things + " the walls are not included :-("
+        }
+
+        if (ceiling_included === "yes") {
+          included_things += number_of_ceiling_coats + " coats on the ceiling is included, "
+        }
+          else {
+            included_things += " the ceiling is not included, "
+        }
+
+        if (trim_included === "yes") {
+          included_things += number_of_trim_coats + " coats on the trim are included"
+        }
+          else {
+          included_things += " the ceiling is not included, "
+        }
+
+        included_things_onpage.innerHTML = included_things
+
+        var charge_rate = prompt ("What is your hourly charge rate?").toLowerCase()
+        if (charge_rate === "yes") {
+          var charge_rate = prompt ("How many coats?")
+        }
+
+        if (walls_included === "yes") {
+          var wall_labor_price = (wall_surface_area / 100) * (number_of_wall_coats) * charge_rate
+          var wall_paint_price = ((wall_surface_area * number_of_wall_coats) / 300) * 35
+          var wall_price_onpage = document.getElementById("wall_price_onpage")
+          var total_wall_price = wall_labor_price + wall_paint_price
+          wall_price_onpage.innerHTML = "The walls will cost a total of $" + total_wall_price + ", "
+        }
+
+        if (ceiling_included === "yes") {
+          var ceiling_labor_price = (floor_space / 75) * (number_of_ceiling_coats) * charge_rate
+          var ceiling_paint_price = ((floor_space) / 300) * 35
+          var ceiling_price_onpage = document.getElementById("ceiling_price_onpage")
+          var total_ceiling_price = ceiling_labor_price + ceiling_paint_price
+          ceiling_price_onpage.innerHTML = "the ceiling will cost a total of $" + total_ceiling_price + ", "
+        }
+
+        if (trim_included === "yes") {
+          var trim_labor_price = (trim_linear_feet / 40) * (number_of_trim_coats) * charge_rate
+          var trim_paint_price = ((trim_linear_feet) / 125) * 35
+          var trim_price_onpage = document.getElementById("trim_price_onpage")
+          var total_trim_price = trim_labor_price + trim_paint_price
+          trim_price_onpage.innerHTML = "the trim will cost a total of $" + total_trim_price + ", "
+        }
+        var total_job_price = total_wall_price + total_ceiling_price + total_trim_price
+        total_job_price_onpage.innerHTML = "The total price for the job is $ " + total_job_price + "!"
+
+      </script>
+  </body>
+</html>

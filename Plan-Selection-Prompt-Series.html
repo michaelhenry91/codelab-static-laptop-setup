@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Which plan is right for you?</title>
+    <style>
+      h1 {color:black;
+        font-family:impact;
+        font-size:68px;
+        text-align:center;
+        }
+      h2 {color:red;
+        font-family:comic-sans;
+        font-size:45px;
+        text-align:center;
+        }
+      p {color:gray;
+        font-family:nunito;
+        font-size:20px;
+        text-align:center;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Which plan is right for you?</h1>
+    <h2>Follow the prompts to find out!</h2>
+    <p>This is sample paragraph text.</p>
+    <!-- <h2><span id="bronze"></span></h2>
+    <h2><span id="silver"></span></h2>
+    <h2><span id="gold"></span></h2>
+    <h2><span id="contact_support"></span></h2> -->
+    <h2 id="plan_recommendation"></h2>
+  <script>
+    // function series_of_questions(){
+    var number_of_crews = prompt("Hello painter! This series of prompts is going to help select the plan that's right for you! How many crews does your painting business have?")
+    var plan_recommendation
+    if (number_of_crews > 1) {
+      var sales_volume = prompt("What was your total sales volume last year?")
+      if (number_of_crews < 4 && sales_volume < 350000) {
+        alert ("We think you'd be a great fit for our Silver plan!")
+        plan_recommendation = "silver"
+      } else if (number_of_crews >= 4 && sales_volume >= 350000) {
+        plan_recommendation = "gold"
+        alert ("We think that you'd be a great fit for our Gold plan!")
+      } else {
+        plan_recommendation = "bronze"
+        alert("We think you'd be an excellent fit for our Bronze Plan!")
+      }
+    } else {
+      plan_recommendation = "contact_support"
+      alert ("We're really not sure which plan will be the best fit for you, contact out support team for help!")
+    }
+    var plan_recommendation_onpage_element = document.getElementById('plan_recommendation')
+    plan_recommendation_onpage_element.innerHTML = "We think you're a great fit for the " + plan_recommendation + " plan!"
+    if (plan_recommendation === "bronze") {
+      plan_recommendation_onpage_element.style.color = "brown"
+    } else if (plan_recommendation === "silver") {
+      plan_recommendation_onpage_element.style.color = "silver"
+    } else if (plan_recommendation === "gold") {
+      plan_recommendation_onpage_element.style.color = "gold"
+    } else if (plan_recommendation === "contact_support") {
+      plan_recommendation_onpage_element.style.color = "blue"
+    }
+  </script>
+  </body>
+</html>

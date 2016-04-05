@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Day and Night</title>
+  <style>
+    .day{
+      background-color: lightblue;
+    }
+    .night{
+      background-color: blue;
+    }
+  </style>
+  </head>
+  <body>
+  <button id="samuel_buttons">This is a button</button>
+  <script>
+  document.getElementById("samuel_buttons").onclick = function() {
+    if (document.body.className === "day") {
+      document.body.className = "night"
+    }
+    else {
+      document.body.className = "day"
+    }
+  }
+  </script>
+
+  </body>
+</html>
